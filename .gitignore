@@ -1,0 +1,10 @@
+*.pyc
+*.a
+*.o
+*.so
+*.png
+checkpoint
+milestone
+eval_log
+venv
+tmp
