@@ -18,17 +18,6 @@ ALPHA = 0.4
 GAMMA = 0.9
 
 
-def cepstrally_smoothing(spec):
-    """Return cepstrally smoothed spec
-    """
-    _spec = np.where(spec == 0, np.finfo(float).eps, spec)
-    log_spec = np.log(_spec)
-    ceps = np.fft.irfft(log_spec, NFFT)
-    win = (np.arange(ceps.shape[-1]) < LIFTER).astype(np.float)
-    win[LIFTER] = 0.5
-    return np.absolute(np.fft.rfft(ceps * win, NFFT))
-
-
 def get_complex_spec(wav_, winstep, winlen, with_time_scaled=False):
     """Return complex spec
     """
@@ -68,6 +57,17 @@ def get_imag_spec(complex_spec):
     """Return imag spec
     """
     return np.imag(complex_spec)
+
+
+def cepstrally_smoothing(spec):
+    """Return cepstrally smoothed spec
+    """
+    _spec = np.where(spec == 0, np.finfo(float).eps, spec)
+    log_spec = np.log(_spec)
+    ceps = np.fft.irfft(log_spec, NFFT)
+    win = (np.arange(ceps.shape[-1]) < LIFTER).astype(np.float)
+    win[LIFTER] = 0.5
+    return np.absolute(np.fft.rfft(ceps * win, NFFT))
 
 
 def get_modgdf(complex_spec, complex_spec_time_scaled):
