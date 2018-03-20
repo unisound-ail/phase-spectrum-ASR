@@ -99,7 +99,7 @@ def main():
     parser.add_argument("--wav", default="LDC93S1.wav")
     parser.add_argument("--winstep", type=float, default=0.01)
     parser.add_argument("--winlen", type=float, default=0.025)
-    parser.add_argument("--debug", type=float, default=True)
+    parser.add_argument("--debug", type=bool, default=True)
 
     args = parser.parse_args()
     complex_spec, complex_spec_time_scaled = get_complex_spec(
