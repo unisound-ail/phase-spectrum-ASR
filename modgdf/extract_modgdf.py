@@ -1,6 +1,5 @@
 """Module for extracting phase features
 """
-
 import argparse
 
 import numpy as np
@@ -9,6 +8,7 @@ import scipy.io.wavfile as wav
 from python_speech_features.sigproc import preemphasis, framesig
 
 from plot import plot_data
+
 
 NFFT = 512
 PREEMPH = 0.97
@@ -120,6 +120,7 @@ def main():
     modgdf = get_modgdf(complex_spec, complex_spec_time_scaled)
     plot_data(modgdf, "modgdf.png", "modgdf")
     plot_data(np.absolute(modgdf), "abs_modgdf.png", "abs_modgdf")
+
 
 if __name__ == "__main__":
     main()
