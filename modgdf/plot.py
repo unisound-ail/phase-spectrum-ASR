@@ -3,7 +3,24 @@
 import matplotlib
 matplotlib.use('Agg')
 
+import numpy as np
 import matplotlib.pyplot as plt
+
+
+def plot_one(data, path, ylabel="y"):
+    """Plot data.
+    """
+    fig, ax = plt.subplots()
+
+    x = np.arange(len(data))
+    plt.plot(x, data)
+
+    xlabel = 'freq'
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
+    plt.tight_layout()
+    plt.savefig(path, format='png')
+    plt.close("all")
 
 
 def plot_data(data, path, ylabel="y"):
